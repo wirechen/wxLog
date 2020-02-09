@@ -1,0 +1,31 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+    <appender name="WxAppender" class="com.wirechen.WxAppender">
+        <param name="openIds" value="oG7u11WXPMP0Hn-m2POxxjzfr3FM"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss,SSS} [%c]-[%p] %m%n"/>
+        </layout>
+        <filter class="com.wirechen.WxMatchFilter">
+            <param name="packageToMatch" value="com.fang,com.wirechen"/>
+            <param name="levelMax" value="WARN"/>
+        </filter>
+    </appender>
+
+    <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <!-- 设置日志输出的样式 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- 设置日志输出的格式 -->
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l]%n%m%n%n" />
+        </layout>
+    </appender>
+
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="WxAppender"/>
+    </root>
+
+</log4j:configuration>
