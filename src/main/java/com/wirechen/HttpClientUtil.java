@@ -18,6 +18,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class HttpClientUtil {
 
     private static ThreadPoolExecutor threadPool =
-            new ThreadPoolExecutor(0, 200, 10L, TimeUnit.SECONDS, new SynchronousQueue<>());
+            new ThreadPoolExecutor(0, 10, 10L, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
 
     public static String doGet(String url, Map<String, String> param) {
 

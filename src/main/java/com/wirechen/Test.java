@@ -13,8 +13,8 @@ public class Test {
 
     public static void main(String[] args) {
         log.info("11111");
-        log.warn("【SEM-测试】bbbbbbbbb");
-        log.warn("【S测试】bbbbbbbbb");
+        log.warn("【微信报警测试】bbbbbbbbb");
+        log.warn("bbbbbbbbb");
         log.error("22222");
     }
 }

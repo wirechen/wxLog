@@ -8,11 +8,8 @@
             <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss,SSS} [%c]-[%p] %m%n"/>
         </layout>
         <filter class="com.wirechen.WxMatchFilter">
-            <param name="packageToMatch" value="com.fang,com.wirechen"/>
-<<<<<<< HEAD
-            <param name="stringToMatch" value="SEM"/>
-=======
->>>>>>> 749ff5cd6f9af2da5d6782826ebc1a427ac72dc1
+            <param name="packageToMatch" value="com.wirechen,com.xxx"/>
+            <param name="stringToMatch" value="【微信报警测试】"/>
             <param name="levelMax" value="WARN"/>
         </filter>
     </appender>
