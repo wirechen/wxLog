@@ -7,6 +7,7 @@ import org.apache.log4j.spi.LoggingEvent;
 /**
  * @Auther: wirechen
  * @Date: 2019/2/2 14:54
+<<<<<<< HEAD
  * @Description: 自定义过滤器
  */
 public class WxMatchFilter extends Filter {
@@ -26,6 +27,15 @@ public class WxMatchFilter extends Filter {
     /**
      * 最大等级报警，默认ERROR
      */
+=======
+ * @Description: 微信log4j过滤器
+ */
+public class WxMatchFilter extends Filter {
+
+    String packageToMatch; // 包名过滤 多个用逗号隔开
+    String stringToMatch; // 日志内容过滤 多个用逗号隔开
+    Level levelMin = Level.WARN;
+>>>>>>> 749ff5cd6f9af2da5d6782826ebc1a427ac72dc1
     Level levelMax = Level.ERROR;
 
     public String getPackageToMatch() {

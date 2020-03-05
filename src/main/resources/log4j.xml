@@ -9,7 +9,10 @@
         </layout>
         <filter class="com.wirechen.WxMatchFilter">
             <param name="packageToMatch" value="com.fang,com.wirechen"/>
+<<<<<<< HEAD
             <param name="stringToMatch" value="SEM"/>
+=======
+>>>>>>> 749ff5cd6f9af2da5d6782826ebc1a427ac72dc1
             <param name="levelMax" value="WARN"/>
         </filter>
     </appender>
