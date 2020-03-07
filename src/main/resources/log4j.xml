@@ -2,12 +2,12 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration>
 
-    <appender name="WxAppender" class="com.wirechen.WxAppender">
+    <appender name="WxAppender" class="com.github.wirechen.WxAppender">
         <param name="openIds" value="oG7u11WXPMP0Hn-m2POxxjzfr3FM"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss,SSS} [%c]-[%p] %m%n"/>
         </layout>
-        <filter class="com.wirechen.WxMatchFilter">
+        <filter class="com.github.wirechen.WxMatchFilter">
             <param name="packageToMatch" value="com.wirechen,com.xxx"/>
             <param name="stringToMatch" value="【微信报警测试】"/>
             <param name="levelMax" value="WARN"/>

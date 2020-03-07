@@ -1,4 +1,4 @@
-package com.wirechen;
+package com.github.wirechen;
 
 import org.apache.log4j.Logger;
 
