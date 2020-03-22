@@ -15,7 +15,7 @@ public class Test {
         // 不是指定日志级别-不报警
         log.info("Here is a info log");
         // 指定级别、指定开头内容-触发报警
-        log.warn("【微信报警测试】welcome to use wxLog!");
+        log.warn("【微信报警测试】Welcome to use wxLog!");
         // 不是指定日志开头-不报警
         log.warn("Here is a warn log");
         // 不是指定日志级别-不报警
