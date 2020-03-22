@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.wirechen</groupId>
     <artifactId>wxLog</artifactId>
-    <version>1.0</version>
+    <version>1.0.RELEASE</version>
     <packaging>jar</packaging>
     <name>wxLog</name>
-    <url>https://github.com/wirechen/WxLog</url>
+    <url>https://github.com/wirechen/wxLog</url>
     <description>business alarm of wechat</description>
 
     <licenses>
@@ -19,8 +19,8 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/wirechen/WxLog</url>
-        <connection>https://github.com/wirechen/WxLog.git</connection>
+        <url>https://github.com/wirechen/wxLog</url>
+        <connection>https://github.com/wirechen/wxLog.git</connection>
         <developerConnection>https://github.com/wirechen</developerConnection>
     </scm>
 
