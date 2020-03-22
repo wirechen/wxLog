@@ -7,16 +7,16 @@ import org.apache.log4j.spi.LoggingEvent;
 /**
  * @Auther: wirechen
  * @Date: 2019/2/2 14:54
- * @Description: 自定义过滤器
+ * @Description: wxLog-Filter过滤器
  */
 public class WxMatchFilter extends Filter {
 
     /**
-     * 包名过滤 多个用逗号隔开
+     * 包名过滤，多个用英文逗号隔开
      */
     String packageToMatch;
     /**
-     * 日志内容过滤 多个用逗号隔开
+     * 日志开头内容过滤，多个用英文逗号隔开
      */
     String stringToMatch;
     /**
@@ -78,7 +78,7 @@ public class WxMatchFilter extends Filter {
         if (stringToMatch != null) {
             String message = event.getMessage().toString();
             for (String content : stringToMatch.split(",")) {
-                if (message.indexOf(content) != -1) {
+                if (message.startsWith(content)) {
                     return true;
                 }
             }
