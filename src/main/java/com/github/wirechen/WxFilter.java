@@ -9,7 +9,7 @@ import org.apache.log4j.spi.LoggingEvent;
  * @Date: 2019/2/2 14:54
  * @Description: wxLog-Filter过滤器
  */
-public class WxMatchFilter extends Filter {
+public class WxFilter extends Filter {
 
     /**
      * 包名过滤，多个用英文逗号隔开
@@ -70,7 +70,7 @@ public class WxMatchFilter extends Filter {
     }
 
     /**
-     * 过滤日志内容
+     * 过滤日志开头内容
      * @param event
      * @return
      */

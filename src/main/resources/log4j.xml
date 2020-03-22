@@ -2,30 +2,30 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration>
 
+    <!-- 定义自己的WxAppender -->
     <appender name="WxAppender" class="com.github.wirechen.WxAppender">
+        <!-- 填写自己的openId (openId在公众号wirechen获取) -->
         <param name="openIds" value="oG7u11WXPMP0Hn-m2POxxjzfr3FM"/>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss,SSS} [%c]-[%p] %m%n"/>
-        </layout>
-        <filter class="com.github.wirechen.WxMatchFilter">
-            <param name="packageToMatch" value="com.wirechen,com.xxx"/>
+        <!-- 定义自己的WxFilter -->
+        <filter class="com.github.wirechen.WxFilter">
+            <param name="packageToMatch" value="com.github.wirechen,com.xxx"/>
             <param name="stringToMatch" value="【微信报警测试】"/>
             <param name="levelMax" value="WARN"/>
         </filter>
     </appender>
 
+    <!--控制台的日志Appender-->
     <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
-        <!-- 设置日志输出的样式 -->
+        <!-- 日志输出样式 -->
         <layout class="org.apache.log4j.PatternLayout">
-            <!-- 设置日志输出的格式 -->
             <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss:SSS}] [%-5p] [method:%l]%n%m%n%n" />
         </layout>
     </appender>
 
-
     <root>
         <priority value="INFO"/>
         <appender-ref ref="ConsoleAppender"/>
+        <!-- 最后，不要忘了要在root下添加你的WxAppender -->
         <appender-ref ref="WxAppender"/>
     </root>
 
