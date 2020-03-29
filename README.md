@@ -114,15 +114,15 @@ Log4j的衰落得从Ceki Gülcü大佬离开Apache开始说起。。。。。
 
 2. 修改`log4j.xml`配置文件，在`openIds`一栏输入添加自己的openid
 
-![image.png](http://wirechen-image.test.upcdn.net/blog/29840a48328f37b63009c606ba830802.png)
+<img src="http://wirechen-image.test.upcdn.net/blog/29840a48328f37b63009c606ba830802.png" width ="400" height ="120" align=center />
 
 3. 运行`Test`中的main方法
 
-![image.png](http://wirechen-image.test.upcdn.net/blog/ae1178087d66507370f7122f22f85d6c.png)
+<img src="http://wirechen-image.test.upcdn.net/blog/ae1178087d66507370f7122f22f85d6c.png" width ="370" height ="200" align=center />
 
 4. 成功接收到微信报警
 
-![image.png](http://wirechen-image.test.upcdn.net/blog/8c8d6c4d4579b3c4910342558d9493dc.png)
+<img src="http://wirechen-image.test.upcdn.net/blog/8c8d6c4d4579b3c4910342558d9493dc.png" width ="370" height ="280" align=center />
 
 ### 5. 项目实战分享
 
