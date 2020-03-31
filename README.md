@@ -1,8 +1,3 @@
-## 目录
-[1. 背景](#背景)  
-[2. 日志历史梳理](#日志历史梳理)  
-[3. 接入教程](#接入教程)  
-
 ## 背景
 PM：这期的活动项目当用户参与人数达到250人的时候麻烦通知我一下，我要看下效果决定是否群发推送或者下掉活动。
 我：为啥非得是250人？
@@ -13,10 +8,36 @@ PM：是的，拜托了开发爸爸。
 既然产品都叫爸爸了，咱们也不好拒绝啊不是？但是咱也不能上线后一直盯着生产数据看啊，em....这是个问题....
 
 
-好吧，以上都是我YY的，言归正传。我们平时在业务开发中，除了上面的应用场景还有很多，如：对接三方接口服务出错、阈值触发、异常请求等业务相关需要报警的场景有很多。干脆索性就想搞一个能在生活中**任何时候实时主动通知**我的玩意儿，短信？电话？但要成本啊，就想到我们每天都不离手的微信。然后通知的方式既不想对代码有太大的侵入性，又想实现起来要优雅，于是想到了日志框架打warn日志。于是，wechat + log4j = wxLog 诞生了！
+好吧，以上都是我YY的，言归正传。我们平时在业务开发中，除了上面的应用场景还有很多，如：对接三方接口服务出错、阈值触发、异常请求等业务相关需要报警的场景有很多。干脆索性就想搞一个能在生活中**任何时候实时主动通知**我的玩意儿，短信？电话？但要成本啊，就想到我们每天都不离手的微信。然后通知的方式既不想对代码有太大的侵入性，又想实现起来要优雅，于是想到了日志框架打warn日志。于是，weixin+ log = wxLog 诞生了！
 
-## 日志历史梳理
-说实话，开发wxLog之前我对SLF4j、log4j、log4j-core、log4j-api、logback、Java Util Logging、commons-logging等等各种日志框架之间的关系是懵逼的，相信也有部分开发同学还是不太清楚，请允许我装个B，在这里简单梳理一下。如果对这日志发展史比较熟悉的同学，可以直接看[接入教程](#接入教程)。
+## 快速体验
+
+1. 克隆项目到自己本地
+`git clone https://github.com/wirechen/wxLog.git`
+
+2. 获取openid
+关注微信公众号【wirechen】，点击【微信报警】在子栏目选择【openid】即可获取。
+
+<img src="http://wirechen-image.test.upcdn.net/blog/44be3ba38b70f13e9cbeac771ede0fd0.jpg" width ="300" height ="300" align=center />
+
+<img src="http://wirechen-image.test.upcdn.net/blog/3bfb9710e98bac63956b966b057151fd.png" width ="300" height ="220" align=center />
+
+<img src="http://wirechen-image.test.upcdn.net/blog/240b89099a9da837f8638ee3973525a8.png" width ="300" height ="180" align=center />
+
+3. 修改`log4j.xml`配置文件，在`openIds`一栏输入添加自己的openid
+
+<img src="http://wirechen-image.test.upcdn.net/blog/29840a48328f37b63009c606ba830802.png" width ="400" height ="120" align=center />
+
+4. 运行`Test`中的main方法
+
+<img src="http://wirechen-image.test.upcdn.net/blog/ae1178087d66507370f7122f22f85d6c.png" width ="370" height ="200" align=center />
+
+5. 成功接收到微信报警
+
+<img src="http://wirechen-image.test.upcdn.net/blog/8c8d6c4d4579b3c4910342558d9493dc.png" width ="370" height ="280" align=center />
+
+## <a id="history">日志历史梳理</a>
+说实话，开发wxLog之前我对SLF4j、log4j、log4j-core、log4j-api、logback、Java Util Logging、commons-logging等等各种日志框架之间的关系是懵逼的，相信也有部分开发同学还是不太清楚，请允许我装个B，在这里简单梳理一下。如果对这日志发展史比较熟悉的同学，可以直接看[接入教程](#teach)。
 
 > **以Log4j为发展主线，简单划分Log4j为四个时代：**
 
@@ -62,7 +83,7 @@ Log4j的衰落得从Ceki Gülcü大佬离开Apache开始说起。。。。。
 * wxLog2.0版现在已在运粮中，考虑到SLF4j的绝对地位，目前暂定下期采用SLF4j+AOP的方式以支持所有以SLF4j作为日志门面的项目。2.0开发分支已建，欢迎提pr，SLF4j的源码分析可以参考这篇博客：[chlsmile](https://www.cnblogs.com/chenhongliang/p/5312517.html)。
 欢迎有兴趣的同学一起加入，相互探讨、相互学习！
 
-## 接入教程
+## <a id="teach">接入wxLog到你的项目</a>
 
 ### 1. 引入wxLog依赖
 目前已上传至maven中央仓库，但阿里云镜像还未同步过去，我也不知道为啥，知道的同学可以告诉我一下。如果不能下载jar包请切换源为中央仓库。
@@ -75,21 +96,12 @@ Log4j的衰落得从Ceki Gülcü大佬离开Apache开始说起。。。。。
 ```
 > ps：如果自己项目中的Log4j和wxLog里面的Log4j版本不同，可以exclusion掉，httpclient同理。
 
-### 2. 获取openid
-关注微信公众号【wirechen】，点击【微信报警】在子栏目选择【openid】即可获取。
-
-<img src="http://wirechen-image.test.upcdn.net/blog/44be3ba38b70f13e9cbeac771ede0fd0.jpg" width ="300" height ="300" align=center />
-
-<img src="http://wirechen-image.test.upcdn.net/blog/3bfb9710e98bac63956b966b057151fd.png" width ="300" height ="220" align=center />
-
-<img src="http://wirechen-image.test.upcdn.net/blog/240b89099a9da837f8638ee3973525a8.png" width ="300" height ="180" align=center />
-
-
-### 3. 添加配置
-在日志配置文件添加WxAppender并引入到Root
+### 2. 添加配置
+在Log4j日志配置文件添加WxAppender并引入到Root
+> xml格式
 ```xml
 <appender name="WxAppender" class="com.github.wirechen.WxAppender">
-    <!-- 必填项：openIds添加参考步骤2，多个可以用英文逗号分割 -->
+    <!-- 必填项：openIds添加参考快速体验-步骤2，多个可以用英文逗号分割 -->
     <param name="openIds" value="xxx"/>
     <!-- 非必填项 -->
     <filter class="com.github.wirechen.WxFilter">
@@ -102,6 +114,15 @@ Log4j的衰落得从Ceki Gülcü大佬离开Apache开始说起。。。。。
     </filter>
 </appender>
 ```
+> properties格式
+```properties
+log4j.appender.WxAppender=com.github.wirechen.WxAppender
+log4j.appender.WxAppender.openIds=xxxx
+log4j.appender.WxAppender.filter=com.github.wirechen.WxFilter
+log4j.appender.WxAppender.filter.packageToMatch=com.xxx
+log4j.appender.WxAppender.filter.levelMax=WARN
+```
+
 ```xml
 <root>
     <level value="INFO"/>
@@ -112,26 +133,19 @@ Log4j的衰落得从Ceki Gülcü大佬离开Apache开始说起。。。。。
 </root>
 ```
 
-### 4. 快速体验
+### 3. 应用测试
+直接在Java代码中打日志：`log.warn("【微信报警】巴拉巴拉...")`
 
-1. 克隆项目到自己本地
-`git clone https://github.com/wirechen/wxLog.git`
+如果没有收到微信报警推送，可以：
+1. 请回看[**日志历史梳理**](#history)检查自己属于哪个“时代”，不要搞半天发现不是用的Log4j。
+2. 检查是否符合过滤条件。
+3. 在公众号留言联系作者。
 
-2. 修改`log4j.xml`配置文件，在`openIds`一栏输入添加自己的openid
-
-<img src="http://wirechen-image.test.upcdn.net/blog/29840a48328f37b63009c606ba830802.png" width ="400" height ="120" align=center />
-
-3. 运行`Test`中的main方法
-
-<img src="http://wirechen-image.test.upcdn.net/blog/ae1178087d66507370f7122f22f85d6c.png" width ="370" height ="200" align=center />
-
-4. 成功接收到微信报警
-
-<img src="http://wirechen-image.test.upcdn.net/blog/8c8d6c4d4579b3c4910342558d9493dc.png" width ="370" height ="280" align=center />
-
-### 5. 项目实战分享
+### 4. 项目实战分享
 
 - 其实wxLog这工具我已经运用到我们公司的项目有一年多时间了吧，运行一直也都很稳定。我们公司的日志架构是SLF4j+Log4j，当初就研究Log4j源码，所以wxLog1.0也只支持Log4j。
 - 开发wxLog初衷是当初在开发公司的SEM系统对接各大搜索引擎平台时，每天都需要定时与各渠道同步数据，但经常因对方的服务问题或者网络问题导致同步失败（特别是360），可能导致自家系统的数据不准确，影响算法结果，还浪费宝贵的API限额。所以做了个业务报警，触发报警后进行人工干预，暂停或休息该渠道的数据同步。
 - 当然还有很多需要报警的业务场景的地方也都用上了。比如：对接公司大数据组每周提供的数据时先做个数据总量的基本校验，判断当新老数据的数据总量相差大于某个阈值时打个log.warn日志，报警就推送到手机微信啦，收到报警后及时跟大数据组反馈一下让对方排查。还有类似[**背景**](#背景)中的玩笑故事等任何业务场景有报警需要都可以用上wxLog。
 - 最后说明一点：我的服务器配置也是比较低的，如果后期用的人多了我可能会考虑在服务端做限流。如果大家要运用到生产，建议最好wxLog的服务端用自己的（看源码里面的提供个HTTP接口就可以了，也不一定非要用微信报警的形式）。
+
+
